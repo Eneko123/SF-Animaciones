@@ -76,6 +76,14 @@ public class Player : MonoBehaviour
             verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * Gravity);
     }
 
+    private void OnShoot(InputValue value)
+    {
+        if (!canPlayerMove && value.isPressed && !controller.isGrounded)
+        {
+            animator.SetTrigger("Shoot");
+        }
+    }
+
     public bool GetCanPlayerMove() => canPlayerMove;
     public bool GetCanCameraMove() => canCameraMove;
     public void SetCanPlayerMove(bool newCanPlayerMove) => canPlayerMove = newCanPlayerMove;
